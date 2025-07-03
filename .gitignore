@@ -1,0 +1,9 @@
+# Authentication and session files
+auth.json
+.env
+
+# Temporary data files
+scraped_tasks.txt
+
+# Virtual environment
+venv/
