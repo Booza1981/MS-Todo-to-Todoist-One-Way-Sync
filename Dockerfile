@@ -1,5 +1,5 @@
 # Start from the same base image
-FROM mcr.microsoft.com/playwright/python:v1.42.0-jammy
+FROM mcr.microsoft.com/playwright/python:v1.53.0-jammy
 
 # Set timezone to avoid issues with cron scheduling
 ENV TZ=UTC
