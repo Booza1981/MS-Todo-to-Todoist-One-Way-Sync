@@ -21,6 +21,9 @@ COPY scraper-cron /etc/cron.d/scraper-cron
 RUN chmod 0644 /etc/cron.d/scraper-cron && \
     touch /var/log/cron.log
 
-# Run the command on container startup
-# Starts cron and tails the log file to keep the container running and show logs.
-CMD ["cron", "-f"]
+# Copy the entrypoint script and make it executable
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Set the entrypoint
+ENTRYPOINT ["entrypoint.sh"]

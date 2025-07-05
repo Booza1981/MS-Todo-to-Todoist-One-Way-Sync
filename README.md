@@ -90,11 +90,13 @@ This will build the Docker image and start the container in the background. The 
 
 ### Checking Logs
 
-To see the output from the scraper and check if the cron job is running, you can view the container's logs:
+To see the output from the scraper, you can view the container's logs:
 
 ```bash
 docker-compose logs -f
 ```
+
+> **Note:** An initial sync will run immediately when the container starts. You will see the log output right away. Subsequent syncs will occur automatically every 4 hours.
 
 ### Stopping the Scraper
 
@@ -102,11 +104,4 @@ To stop the container and remove the network, run:
 
 ```bash
 docker-compose down
-
-## Viewing Logs
-
-To view the logs from the cron job, run the following command:
-
-```bash
-docker-compose logs -f
 ```
