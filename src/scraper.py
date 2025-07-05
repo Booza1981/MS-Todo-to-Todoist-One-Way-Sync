@@ -91,8 +91,15 @@ async def main():
             context = await browser.new_context(storage_state=AUTH_FILE)
             page = await context.new_page()
             await page.goto("https://to-do.office.com/tasks/inbox")
-            print("Logged in automatically using saved session.")
-            await page.screenshot(path="screenshots/login_attempt.png")
+            try:
+                print("Waiting for main UI to load...")
+                await page.wait_for_selector('span.mectrl_screen_reader_text', timeout=60000)
+                print("UI loaded successfully.")
+            except TimeoutError:
+                print("Timeout waiting for UI, taking screenshot.")
+                await page.screenshot(path="screenshots/login_timeout.png")
+                # Optionally re-raise the error or handle it gracefully
+                raise
 
             tasks = await scrape_task_list(
                 page,
