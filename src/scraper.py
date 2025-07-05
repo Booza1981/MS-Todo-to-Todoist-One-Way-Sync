@@ -92,6 +92,7 @@ async def main():
             page = await context.new_page()
             await page.goto("https://to-do.office.com/tasks/inbox")
             print("Logged in automatically using saved session.")
+            await page.screenshot(path="screenshots/login_attempt.png")
 
             tasks = await scrape_task_list(
                 page,

@@ -13,6 +13,7 @@ services:
       # Mount the auth file into the container.
       # The script expects it in the root of the app directory.
       - ./auth.json:/app/auth.json
+      - ./screenshots:/app/screenshots
       # Mount a volume for logs to persist them (optional but good practice)
       - scraper_logs:/var/log
 
