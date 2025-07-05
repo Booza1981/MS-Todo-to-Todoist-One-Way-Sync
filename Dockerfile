@@ -23,4 +23,4 @@ RUN chmod 0644 /etc/cron.d/scraper-cron && \
 
 # Run the command on container startup
 # Starts cron and tails the log file to keep the container running and show logs.
-CMD cron && tail -f /var/log/cron.log
+CMD ["cron", "-f"]

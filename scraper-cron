@@ -1,3 +1,2 @@
 # Run the scraper script every 4 hours.
-# Log all output to the cron.log file, which is tailed by the container's CMD.
-*/4 * * * *  root    /usr/bin/python3 -m src.main >> /var/log/cron.log 2>&1
+0 */4 * * *  root    python -m src.main >> /var/log/cron.log 2>&1

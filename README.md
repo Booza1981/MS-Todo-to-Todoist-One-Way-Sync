@@ -102,3 +102,11 @@ To stop the container and remove the network, run:
 
 ```bash
 docker-compose down
+
+## Viewing Logs
+
+To view the logs from the cron job, run the following command:
+
+```bash
+docker-compose logs -f
+```
