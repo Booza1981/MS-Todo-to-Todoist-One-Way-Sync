@@ -8,25 +8,22 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # Install cron
 RUN apt-get update && apt-get install -y cron
 
-# Copy application code
+# Set working directory
 WORKDIR /app
+
+# Copy application code and install dependencies
 COPY src/ /app/src/
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Add the crontab file to the cron directory
+# Copy cron file and set permissions
 COPY scraper-cron /etc/cron.d/scraper-cron
-
-# Give execution rights on the cron job and create the log file
 RUN chmod 0644 /etc/cron.d/scraper-cron && \
     touch /var/log/cron.log
 
-# Copy the entrypoint script and make it executable
+# Copy entrypoint script and make it executable
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
-
-# Set the working directory
-WORKDIR /app
 
 # Set the entrypoint
 ENTRYPOINT ["entrypoint.sh"]
