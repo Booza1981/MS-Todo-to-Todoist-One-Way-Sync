@@ -25,5 +25,8 @@ RUN chmod 0644 /etc/cron.d/scraper-cron && \
 COPY entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
+# Set the working directory
+WORKDIR /app
+
 # Set the entrypoint
 ENTRYPOINT ["entrypoint.sh"]

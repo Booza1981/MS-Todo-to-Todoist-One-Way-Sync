@@ -2,7 +2,7 @@
 
 # Log that the container has started and run the initial sync
 echo "Container has started. Performing initial sync..."
-python /app/src/main.py
+python -m src.main
 echo "Initial sync complete."
 echo "------------------------------------------------"
 
