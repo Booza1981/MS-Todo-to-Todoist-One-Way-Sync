@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  scraper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ms-todo-scraper
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      # Mount the auth file into the container.
+      # The script expects it in the root of the app directory.
+      - ./auth.json:/app/auth.json
+      # Mount a volume for logs to persist them (optional but good practice)
+      - scraper_logs:/var/log
+
+volumes:
+  scraper_logs:

@@ -7,3 +7,10 @@ scraped_tasks.txt
 
 # Virtual environment
 venv/
+__pycache__/
+
+# --- Security ---
+# Ignore environment files and authentication state.
+# These should never be committed to version control.
+.env
+auth.json
